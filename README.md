@@ -1,18 +1,6 @@
 # LLMEval-3
 
-<img src=".\pic\llmeval-logo.png" alt="llmeval-logo" style="zoom:50%;" />
-
-## 目录说明
-
-```
-├─code 评测代码
-├─data
-│  ├─data_process 数据处理过程的代码文件和数据文件
-│  ├─logs 处理日志
-│  └─raw_data 原始的尚未变形的题目
-├─pic 图片
-└─release 可以发布的1000题
-```
+<img src=".\pic\llmeval-logo.png" alt="llmeval-logo" style="zoom:30%;" />
 
 
 
@@ -56,17 +44,20 @@ You must provide your feedback in the following format:
 为了规避由随机抽样1000题引入的系统偏差，LLMEval-3使用**相对分数**和**绝对分数**两个指标。
 
 模型的相对分数定义为其绝对分数相比于GPT-3.5-turbo以及GPT-4在相同题目上取得的绝对分数的分位并映射到 $[0, 100]$ 区间，使用 $$\rho_{\text{GPT-3.5}}^{model}$$ 和 $$\rho_{\text{GPT-4}}^{model}$$ 表示，具体计算公式如下：
+
+
 $$
 \rho^{model}_{\text{GPT-3.5}}=\frac{S_{model}}{S_\text{GPT-3.5}} \times 100
 $$
+
 
 $$
 \rho^{model}_{\text{GPT-4}}=\frac{S_{model}}{S_\text{GPT-4}} \times 100
 $$
 
 
+模型的绝对分数是指模型在 $N=1000$ 道题目的单题得分 $s_{i}$ (单题总分 $s_{max}=3$  )之和并映射到 $[0, 100]$ 区间，使用 $S_{model}$ 表示，具体计算公式如下：
 
-模型的绝对分数是指模型在 $$N=1000$$ 道题目的单题得分 $$s_{i}$$ (单题总分 $$s_{max}=3$$  )之和并映射到 $$[0, 100]$$ 区间，使用 $$S_{model}$$ 表示，具体计算公式如下：
 $$
 S_{model}=\frac{\sum_{i=1}^Ns_i}{N\times s_{max}} \times100
 $$
