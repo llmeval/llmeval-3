@@ -1,7 +1,5 @@
 # LLMEval-3
-
-<img src=".\pic\llmeval-logo.png" alt="llmeval-logo" style="zoom:30%;" />
-
+<div align=center><img src="\pic\llmeval-logo.png"/></div>
 
 
 ## 题目内容与形式
@@ -26,8 +24,8 @@ LLMEval-3聚焦于专业知识能力评测，涵盖哲学、经济学、法学�
 Please evaluate the following response from the LLM regarding a discipline-specific question based  on the following criteria. You must score it on a scale of 0, 1, 2 or 3 stars:
 
 Overall Rating:
-0 star indicates wrong answer with a wrong explanation
-1 stars indicate wrong answer but a partially reasonable explanation
+0 stars indicate wrong answer with a wrong explanation
+1 star indicates wrong answer but a partially reasonable explanation
 2 stars indicate a correct answer with a partially reasonable explanation
 3 stars indicate a correct answer with a reasonable explanation
 
@@ -43,24 +41,25 @@ You must provide your feedback in the following format:
 
 为了规避由随机抽样1000题引入的系统偏差，LLMEval-3使用**相对分数**和**绝对分数**两个指标。
 
-模型的相对分数定义为其绝对分数相比于GPT-3.5-turbo以及GPT-4在相同题目上取得的绝对分数的分位并映射到 $[0, 100]$ 区间，使用 $$\rho_{\text{GPT-3.5}}^{model}$$ 和 $$\rho_{\text{GPT-4}}^{model}$$ 表示，具体计算公式如下：
+模型的相对分数定义为其绝对分数相比于GPT-3.5-turbo以及GPT-4在相同题目上取得的绝对分数的分位并映射到 $[0, 100]$ 区间，使用 $\rho_{\text{GPT-3.5}}^{model}$ 和 $\rho_{\text{GPT-4}}^{model}$ 表示，具体计算公式如下：
 
 
 $$
-\rho^{model}_{\text{GPT-3.5}}=\frac{S_{model}}{S_\text{GPT-3.5}} \times 100
+\rho_{\text{GPT-3.5}}^{model}=\frac{S_{model}}{S_\text{GPT-3.5}}\times 100 
 $$
 
-
 $$
-\rho^{model}_{\text{GPT-4}}=\frac{S_{model}}{S_\text{GPT-4}} \times 100
+\rho_{\text{GPT-4}}^{model}=\frac{S_{model}}{S_\text{GPT-4}}\times 100 
 $$
 
 
 模型的绝对分数是指模型在 $N=1000$ 道题目的单题得分 $s_{i}$ (单题总分 $s_{max}=3$  )之和并映射到 $[0, 100]$ 区间，使用 $S_{model}$ 表示，具体计算公式如下：
 
 $$
-S_{model}=\frac{\sum_{i=1}^Ns_i}{N\times s_{max}} \times100
+S_{model}= \frac{\sum_{i=1}^N s_i }{N \times s_{max}} \times 100\ 
 $$
+
+
 
 ## 评测结果
 
